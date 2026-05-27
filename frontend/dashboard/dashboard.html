@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VELOCITY — Dashboard</title>
+<link rel="stylesheet" href="./dashboard.css">
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="car-strip"></div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="brand">
+    <div class="brand-icon">🚗</div>
+    <span class="brand-name">Velocity</span>
+  </div>
+  <div class="nav-right">
+    <div class="user-badge">Logged in as <span id="userEmail">—</span></div>
+    <button class="btn-logout" onclick="logout()">Logout</button>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div>
+      <div class="page-title">ALL <span>CARS</span></div>
+      <div class="page-sub">Browse and rent available vehicles</div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-icon total">🚗</div>
+      <div>
+        <div class="stat-num" id="totalCount">0</div>
+        <div class="stat-label">Total Cars</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon available">✅</div>
+      <div>
+        <div class="stat-num" id="availableCount">0</div>
+        <div class="stat-label">Available</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon rented">🔑</div>
+      <div>
+        <div class="stat-num" id="rentedCount">0</div>
+        <div class="stat-label">Rented</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTROLS -->
+  <div class="controls">
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input
+        type="text"
+        class="search-input"
+        placeholder="Search by brand or model..."
+        oninput="filterCars()"
+        id="searchInput"
+      />
+    </div>
+    <select class="filter-select" id="statusFilter" onchange="filterCars()">
+      <option value="ALL">All Status</option>
+      <option value="AVAILABLE">Available</option>
+      <option value="RENTED">Rented</option>
+      <option value="MAINTENANCE">Maintenance</option>
+    </select>
+  </div>
+
+  <!-- CARS GRID -->
+  <div class="cars-grid" id="carsGrid">
+    <div class="loading-state">
+      <div class="spinner"></div>
+      <div>Loading cars...</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script src="./dashboard.js"></script>
+
+</body>
+</html>
